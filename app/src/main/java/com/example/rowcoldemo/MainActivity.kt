@@ -22,6 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.Alignment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,30 +43,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    Column(modifier) {
-        Row {
-            Column {
-                TextCell("1")
-                TextCell("2")
-                TextCell("3")
-            }
-            Column {
-                TextCell("4")
-                TextCell("5")
-                TextCell("6")
-            }
-            Column {
-                TextCell("7")
-                TextCell("8")
-            }
-        }
-        Row {
-            TextCell("9")
-            TextCell("10")
-            TextCell("11")
-        }
+    Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier.width(1000.dp).height(300.dp)
+    ) {
+        TextCell("1", Modifier.align(Alignment.Top))
+        TextCell("2", Modifier.align(Alignment.CenterVertically))
+        TextCell("3", Modifier.align(Alignment.Bottom))
     }
 }
+
 @Composable
 fun TextCell(text: String, modifier: Modifier = Modifier) {
     val cellModifier = modifier
